@@ -1,0 +1,32 @@
+/*
+        NEW by 777 from 03.01.2020
+        For: Zulu Hotel Europe
+
+        https://zuluhotel.net.ua
+		
+		zuluhotel.net.ua@gmail.com
+*/
+use uo;
+
+program iStaff(who)
+
+	if( who.cmdlevel > 0 )
+		SetObjProperty(who, "@cmdLevel", who.cmdlevel);
+	endif
+	
+	if( who.cmdlevel > 0 )
+		who.cmdlevel := 0;
+		
+		SendSysMessage(who, "You are now Player.", 3, 68 );
+	else
+		if(GetObjProperty(who, "@cmdLevel"))
+			who.cmdlevel := GetObjProperty(who, "@cmdLevel");
+			EraseObjProperty(who, "@cmdLevel");
+		else
+			who.cmdlevel := 5; // Can be changed
+		endif
+		
+		SendSysMessage(who, "You are now Staff!", 3, 68 );
+	endif
+ 
+endprogram
